@@ -11,9 +11,19 @@ services:
     networks:
       - code-network
   php:
-    image: php:7-fpm
+    #image: php:7.1-fpm
+    build: .
     volumes:
       - ./code:/code
+    networks:
+      - code-network
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: magento
+      MYSQL_USER: root
     networks:
       - code-network
 
