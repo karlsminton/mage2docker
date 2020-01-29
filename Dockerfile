@@ -1,6 +1,6 @@
 FROM php:7.1-fpm
 
-RUN apt-get update -y && apt-get install -y libicu-dev g++ libpng-dev libmcrypt-dev libreadline-dev libxml2-dev libxslt-dev libjpeg-dev  libfreetype6-dev mysql-client
+RUN apt-get update -y && apt-get install -y libicu-dev g++ libpng-dev libmcrypt-dev libreadline-dev libxml2-dev libxslt-dev libjpeg-dev  libfreetype6-dev mysql-client-*
 
 RUN docker-php-ext-install pdo_mysql
 RUN docker-php-ext-install bcmath
