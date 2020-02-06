@@ -6,16 +6,16 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./code:/code
-      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./code:/code:delegated
+      - ./default.conf:/etc/nginx/conf.d/default.conf:delegated
     networks:
       - code-network
   php:
     #image: php:7.1-fpm
     build: .
     volumes:
-      - ./code:/code
-      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./code:/code:delegated
+      - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini:delegated
     networks:
       - code-network
   db:
@@ -28,7 +28,7 @@ services:
     networks:
       - code-network
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql:delegated
 networks:
   code-network:
     driver: bridge
