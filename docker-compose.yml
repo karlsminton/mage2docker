@@ -16,6 +16,7 @@ services:
     volumes:
       - ./code:/code:delegated
       - ./custom.ini:/usr/local/etc/php/conf.d/custom.ini:delegated
+      - ./www.conf:/usr/local/etc/php-fpm.d/www.conf:delegated
     networks:
       - code-network
   db:
