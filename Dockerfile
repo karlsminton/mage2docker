@@ -1,4 +1,4 @@
-FROM php:7.1-fpm
+FROM php:7.3-fpm
 
 RUN apt-get update -y && apt-get install -y libicu-dev \
     g++ \
@@ -11,7 +11,10 @@ RUN apt-get update -y && apt-get install -y libicu-dev \
     libfreetype6-dev \
     mysql-client-* \
     mailutils \
-    wget
+    wget \
+    libsodium-dev \
+    zlib1g-dev \
+    libzip-dev
 
 RUN wget https://github.com/mailhog/mhsendmail/releases/download/v0.2.0/mhsendmail_linux_amd64
 RUN chmod +x mhsendmail_linux_amd64
@@ -23,9 +26,9 @@ RUN docker-php-ext-install bcmath
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ && docker-php-ext-install gd
 
 RUN docker-php-ext-install intl
-RUN docker-php-ext-install mcrypt
 RUN docker-php-ext-install soap
 RUN docker-php-ext-install xsl
 RUN docker-php-ext-install zip
 RUN docker-php-ext-install sockets
+RUN docker-php-ext-install sodium
 
