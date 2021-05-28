@@ -15,7 +15,6 @@ services:
     volumes:
       - ./code:/code:delegated
       - ./confs/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini:delegated
-      - ./confs/php/xdebug_enable.ini:/usr/local/etc/php/conf.d/xdebug_enable.ini:delegated
       - ./confs/php/www.conf:/usr/local/etc/php-fpm.d/www.conf:delegated
       - ./confs/php/sendmail.ini:/usr/local/etc/php/conf.d/sendmail.ini:delegated
     networks:

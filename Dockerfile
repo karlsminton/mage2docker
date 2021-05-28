@@ -32,5 +32,4 @@ RUN docker-php-ext-install zip
 RUN docker-php-ext-install sockets
 RUN docker-php-ext-install sodium
 RUN pecl install xdebug
-RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug_enable.ini
-
+RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" >> /usr/local/etc/php/conf.d/xdebug_enable.ini
