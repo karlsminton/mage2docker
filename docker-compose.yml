@@ -38,6 +38,24 @@ services:
       - "8025:8025"
     networks:
       - code-network
+  elasticsearch:
+    image: elasticsearch:7.1.0
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    networks:
+      - code-network
 
 networks:
   code-network:
